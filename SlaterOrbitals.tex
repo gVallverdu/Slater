@@ -1,0 +1,139 @@
+\documentclass[%
+aip,%
+jcp,%
+amsmath,amssymb,%
+%preprint,%
+reprint,%
+]{revtex4-1}
+
+\usepackage[utf8]{inputenc}
+
+\newcommand*{\radint}{\int_0^{\infty}}
+\newcommand*{\Ncal}{\mathcal{N}}
+\newcommand*{\spheric}{(r,\theta,\varphi)}			% (r, theta, phi)
+\newcommand*{\angulaire}{(\theta,\varphi)}			% (theta, phi)
+
+
+\begin{document}
+
+\title{Slater atomic orbitals and slater's rule}
+
+\author{Germain Salvato Vallverdu}
+\email{germain.vallverdu@univ-pau.fr}
+\affiliation{Université de Pau et des Pays de l'Adour, IPREM - ECP, CNRS UMR 5254}
+
+\begin{abstract}
+A short review on Slater type orbitals and the Slater's rule.
+\end{abstract}
+
+\maketitle
+
+\section{Orbitales de Slater}
+
+\subsection{Expression générale :}
+%
+\begin{equation*}
+    \Psi_{n,\ell,m_\ell}\spheric = \Ncal r^{n-1} \exp\left( -\frac{Z^* r}{n\,a_o} \right)
+    Y_\ell^{m_\ell}\angulaire
+\end{equation*}
+%
+Densité de probabilité de présence radiale :
+%
+\begin{equation*}
+    \mathcal{D}_{n,\ell}(r) = r^2 |\Psi_{n,l}(r)|^2 = \Ncal^2 r^{2n} 
+        \exp\left( -\frac{2Z^*r}{n\,a_o} \right)
+\end{equation*}
+%
+Calcul du coefficient de normalisation :
+%
+\begin{align*}
+    \radint \mathcal{D}_{n,\ell}(r) dr  & = 1 \\
+    & = \radint \Ncal^2 r^{2n} \exp\left( -\frac{2Z^*r}{n\,a_o} \right) \\
+    & = \Ncal^2 \radint r^{2n} \exp\left( -\frac{2Z^*r}{n\,a_o} \right) \\
+    & = \Ncal^2 \, (2n)! \, \left(\frac{na_o}{2Z^*}\right)^{2n+1}
+\end{align*}
+%
+d'où
+%
+\begin{equation*}
+    \Ncal =\frac{1}{\sqrt{(2n)!}} \left( \frac{2Z^*}{na_o} \right)^{n+1/2} 
+\end{equation*}
+
+Expression analytiques des fonctions radiales des premières valeurs de n :
+%
+\begin{align*}
+    R_{1,\ell}(r) & =  2\left( \frac{Z^*}{a_o} \right)^{3/2} 
+        \exp\left( -\frac{Z^* r}{a_o} \right) \\
+    R_{2,\ell}(r) & =  \frac{1}{\sqrt{24}} \left( \frac{Z^*}{a_o} \right)^{5/2} r 
+        \exp\left( -\frac{Z^* r}{2a_o} \right) \\
+    R_{3,\ell}(r) & =  \frac{1}{12\sqrt{5}} \left( \frac{2Z^*}{3a_o} \right)^{7/2} r^2
+        \exp\left( -\frac{Z^* r}{3a_o} \right) \\
+\end{align*}
+
+\subsection{Rayon orbitalaire}
+
+On définit le rayon orbitaire comme la valeur pour laquelle la densité de probabilté de
+présence radiale, $\mathcal{D}_{n,\ell}(r)$, est maximale. 
+
+Pour trouver les maxima de $\mathcal{D}_{n,\ell}(r)$ on calcule la dérivée première :
+
+\begin{align*}
+    \frac{d\mathcal{D}_{n,\ell}(r)}{dr} & = \frac{d}{dr} \Ncal^2 r^{2n} 
+        \exp\left( -\frac{2Z^*r}{n\,a_o} \right) \\
+    & = \Ncal^2 \left[ 2n r^{2n-1} - \frac{2Z^*}{na_o}r^{2n} \right] 
+    \exp \left( -\frac{2Z^*r}{na_o} \right) \\
+    & = 2\Ncal^2 r^{2n-1}\left[ n - \frac{Z^*r}{na_o} \right] 
+    \exp \left( -\frac{2Z^*r}{na_o} \right)
+\end{align*}
+
+La dérivée est nulle pour $r_1$=0 et pour une valeur $r_2$ qui annule la partie entre
+crochets.
+%
+\begin{equation*}
+    r_2 = \frac{n^2}{Z^*} a_o
+\end{equation*}
+%
+Pour des valeurs de $r\in$, le signe de la dérivée est donnée par la partie entre
+crochets. La dérivée est positive pour des valeurs de $r$ inférieure à $r_2$ et négative
+pour des valeurs de $r$ supérieure à $r_2$. On a donc le tableau de variation suivant :
+
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{c|lcccl}
+    $r$ & 0 & & $\frac{n^2}{Z^*} a_o$ & & $+\infty$ \\
+    \hline
+    $d\mathcal{D}_{nl}/dr$ & & + & 0 & - & \\
+    \hline
+    $\mathcal{D}_{nl}$ &
+\end{tabular}
+
+\section{Intégrales}
+
+\begin{equation*}
+    \int x\,e^{ax} dx = \left( \frac{x}{a} - \frac{1}{a^2} \right) e^{ax}
+\end{equation*}
+
+\begin{equation*}
+    \int x^2\,e^{ax} dx = \left( \frac{x^2}{a} - \frac{2x}{a^2} + \frac{2}{a^3} \right) e^{ax}
+\end{equation*}
+
+\begin{equation*}
+    \int x^3\,e^{ax} dx = \left(\frac{x^3}{a} - \frac{3x^2}{a^2} + \frac{6x}{a^3} -
+    \frac{6}{a^4} \right) e^{ax}
+\end{equation*}
+
+\begin{equation*}
+    \int x^4\,e^{ax} dx = \left( \frac{x^4}{a} - \frac{4x^3}{a^2} + \frac{12x^2}{a^3} 
+    - \frac{24x}{a^4} + \frac{24}{a^5} \right) e^{ax}
+\end{equation*}
+
+\begin{equation*}
+    \int x^n \, e^{ax} dx = \frac{1}{a} x^n \, e^{ax} - 
+        \frac{n}{a} \int x^{n-1} e^{ax} dx
+\end{equation*}
+
+\begin{equation*}
+    \int_0^{\infty} x^n \, e^{-ax} dx = \frac{n!}{a^{n+1}}
+\end{equation*}
+
+
+\end{document}
